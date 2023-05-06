@@ -21,7 +21,7 @@ To install and run the Hangman game on your local machine, follow these steps:
 2. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com//hangman.git
+   git clone https://github.com/Ditebogo50/hangman
    ```
 
 3. Navigate to the project directory:
