@@ -9,29 +9,36 @@ import './App.css';
 import dictionary from './dictionary.json';
 
 function App() {
-  const [word, setWord] = useState('');
-  const [guessedLetters, setGuessedLetters] = useState([]);
-  const [attempts, setAttempts] = useState(10);
-  const [gameStatus, setGameStatus] = useState('');
+  // State variables
+  const [word, setWord] = useState('');                // The word to be guessed
+  const [guessedLetters, setGuessedLetters] = useState([]); // Array of guessed letters
+  const [attempts, setAttempts] = useState(10);        // Number of attempts remaining
+  const [gameStatus, setGameStatus] = useState('');    // Game status: '' (ongoing), 'won', or 'lost'
 
+  // Function to pick a random word from the dictionary
   const getRandomWord = () => {
     const randomIndex = Math.floor(Math.random() * dictionary.length);
     return dictionary[randomIndex].trim().toUpperCase();
   };
 
+  // Set the initial word when the component mounts
   useEffect(() => {
     setWord(getRandomWord());
   }, []);
 
+  // Function to handle a letter guess
   const handleLetterGuess = (letter) => {
+    // Do nothing if the game is over or the letter was already guessed
     if (gameStatus !== '' || guessedLetters.includes(letter)) return;
 
     const updatedGuessedLetters = [...guessedLetters, letter];
     setGuessedLetters(updatedGuessedLetters);
 
     if (!word.includes(letter)) {
+      // Decrement the attempts if the guessed letter is not in the word
       setAttempts((prevAttempts) => prevAttempts - 1);
     } else {
+      // Check if the player has won by revealing all the letters in the word
       const revealedWord = word
         .split('')
         .map((char) => (updatedGuessedLetters.includes(char) ? char : null))
@@ -39,9 +46,11 @@ function App() {
       if (revealedWord === word) setGameStatus('won');
     }
 
+    // Check if the player has lost by running out of attempts
     if (attempts - 1 === 0) setGameStatus('lost');
   };
 
+  // Function to restart the game
   const restartGame = () => {
     setWord(getRandomWord());
     setGuessedLetters([]);
