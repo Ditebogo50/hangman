@@ -9,7 +9,7 @@ const HangmanDisplay = ({ attempts }) => {
   return (
     // Render a div with the "hangman-display" class
     <div className="hangman-display">
-      // Display the image corresponding to the current step of the hangman, based on the remaining attempts
+      {/*Display the image corresponding to the current step of the hangman, based on the remaining attempts*/}
       <img src={hangmanSteps[stepIndex]} alt="Hangman" />
     </div>
   );
