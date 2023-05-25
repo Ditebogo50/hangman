@@ -16,7 +16,9 @@ const Keyboard = ({ onLetterClick, guessedLetters }) => {
           onClick={() => onLetterClick(letter)} // Call the onLetterClick function with the current letter when the button is clicked
           disabled={guessedLetters.includes(letter)} // Disable the button if the letter has already been guessed
         >
-          {letter} // Display the letter on the button
+
+        {/* Display the letter on the button*/}
+          {letter} 
         </button>
       ))}
     </div>
