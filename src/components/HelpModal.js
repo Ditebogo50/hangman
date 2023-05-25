@@ -11,11 +11,11 @@ const HelpModal = () => {
 
     return (
         <>
-            // Render a "Help" button that opens the modal when clicked
+            {/* Render a "Help" button that opens the modal when clicked */}
             <Button variant="primary" onClick={handleShow}>
                 Help
             </Button>
-            // Render the modal with the game rules
+            {/* Render the modal with the game rules */}
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Hangman Rules</Modal.Title>
@@ -41,7 +41,7 @@ const HelpModal = () => {
                     </p>
                 </Modal.Body>
                 <Modal.Footer>
-                    // Render a "Close" button that closes the modal when clicked
+                   {/* Render a "Close" button that closes the modal when clicked */}
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
